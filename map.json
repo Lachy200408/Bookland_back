@@ -1,0 +1,143 @@
+{
+	"admin": {
+		"getallusers": {
+			"method": "get",
+			"url": "/admin/user"
+		},
+		"getallbooks": {
+			"method": "get",
+			"url": "/admin/book"
+		},
+		"getallbookfiles": {
+			"method": "get",
+			"url": "/admin/bookfile"
+		},
+		"getallsharedbooks": {
+			"method": "get",
+			"url": "/admin/sharedbook"
+		},
+		"deleteallusers": {
+			"method": "delete",
+			"url": "/admin/user",
+			"body": {
+				"optional": ["email"]
+			}
+		},
+		"deleteallbooks": {
+			"method": "delete",
+			"url": "/admin/book",
+			"body": {
+				"optional": ["userid", "bookid"]
+			}
+		},
+		"deleteallbookfiles": {
+			"method": "delete",
+			"url": "/admin/bookfile",
+			"body": {
+				"optional": ["fileid"]
+			}
+		}
+	},
+	"auth": {
+		"login": {
+			"method": "post",
+			"url": "/auth/login",
+			"body": {
+				"required": ["username", "password"]
+			}
+		},
+		"signup": {
+			"method": "post",
+			"url": "/auth/signup",
+			"body": {
+				"required": ["username", "email", "password"]
+			}
+		},
+		"logout": {
+			"method": "post",
+			"url": "/auth/logout"
+		},
+		"checktoken": {
+			"method": "get",
+			"url": "/auth/token"
+		}
+	},
+	"user": {
+		"getsocialusers": {
+			"method": "get",
+			"url": "/user/social"
+		},
+		"getuser": {
+			"method": "get",
+			"url": "/user/:id"
+		},
+		"updateuser": {
+			"method": "patch",
+			"url": "/user",
+			"body": {
+				"required": ["userid"],
+				"optional": ["username", "password", "avatarname"]
+			}
+		}
+	},
+	"book": {
+		"getall": {
+			"method": "get",
+			"url": "/book"
+		},
+		"getbyid": {
+			"method": "get",
+			"url": "/book/:id"
+		},
+		"create": {
+			"method": "post",
+			"url": "/book",
+			"body": {
+				"required": ["title", "author", "description", "fileid"]
+			}
+		},
+		"update": {
+			"method": "patch",
+			"url": "/book/:id",
+			"body": {
+				"required": ["title", "author", "description"]
+			}
+		},
+		"delete": {
+			"method": "delete",
+			"url": "/book/:id"
+		},
+		"share": {
+			"method": "post",
+			"url": "/book/share",
+			"body": {
+				"required": ["userid", "bookid"]
+			}
+		},
+		"getsharedbooks": {
+			"method": "get",
+			"url": "/book/share"
+		},
+		"deletesharedbook": {
+			"method": "delete",
+			"url": "/book/share/:id"
+		}
+	},
+	"bookfile": {
+		"upload": {
+			"method": "post",
+			"url": "/bookfile",
+			"body": {
+				"required": ["name", "mimeType", "buffer"]
+			}
+		},
+		"getbyid": {
+			"method": "get",
+			"url": "/bookfile/:id"
+		},
+		"getbinaryfile": {
+			"method": "get",
+			"url": "/bookfile/download/:id"
+		}
+	}
+}
